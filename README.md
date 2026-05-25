@@ -9,6 +9,11 @@ Stage 1 includes:
 - Minimal white design foundation
 - ESLint + Prettier configuration
 
+Stage 2 includes:
+
+- Supabase SQL migrations for schema + RLS policies
+- Seed category hierarchy for core parasha and holiday categories
+
 ## Local Setup
 
 1. Install dependencies:
@@ -42,6 +47,19 @@ SUPABASE_SERVICE_ROLE_KEY=your_supabase_service_role_key
 ```
 
 Never commit real secrets.
+
+`SUPABASE_SERVICE_ROLE_KEY` must only be used in trusted server-side code (server actions, route handlers, background jobs, or Supabase Edge Functions). Never expose it in browser code.
+
+## Supabase Migrations
+
+Migrations are in `supabase/migrations`.
+
+Common local workflow:
+
+```bash
+supabase db reset
+supabase db push
+```
 
 ## Routes (Stage 1)
 
